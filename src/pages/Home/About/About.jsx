@@ -10,10 +10,10 @@ const About = () => {
       }}
     >
       <div className="hero-overlay"></div>
-      <div className="hero-content text-neutral-content text-center md:w-4/5 p-12 bg-[#f5f5f5] text-black">
+      <div className="hero-content text-neutral-content text-center md:w-4/5 p-12 bg-[#f5f5f5]">
         <div className="max-w-md">
-          <h1 className="mb-5 text-5xl font-bold">MR's Kitchen</h1>
-          <p className="mb-5">
+          <h1 className="mb-5 text-5xl font-bold text-black">MR's Kitchen</h1>
+          <p className="mb-5 text-black">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta
             facere, fuga porro fugiat ratione natus distinctio impedit culpa
             laudantium repudiandae non recusandae fugit, iusto optio sapiente

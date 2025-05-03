@@ -8,6 +8,7 @@ import dessertImg from "../../../assets/menu/dessert-bg.jpeg";
 import pizzaImg from "../../../assets/menu/pizza-bg.jpg";
 import saladImg from "../../../assets/menu/salad-bg.jpg";
 import soupImg from "../../../assets/menu/soup-bg.jpg";
+import { Helmet } from "react-helmet";
 
 const Menu = () => {
   const [menu] = useMenu();
@@ -19,6 +20,9 @@ const Menu = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>MR's Kitchen | Menu</title>
+      </Helmet>
       <Cover
         bgImg={coverImg}
         title="our menu"

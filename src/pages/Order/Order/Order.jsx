@@ -6,6 +6,7 @@ import "react-tabs/style/react-tabs.css";
 import useMenu from "../../../hooks/useMenu";
 import OrderTab from "../OrderTab/OrderTab";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Order = () => {
   const categories = ["salads", "pizza", "soups", "desserts", "drinks"];
@@ -22,14 +23,21 @@ const Order = () => {
   const soups = menu.filter((item) => item.category === "soup");
 
   return (
-    <div className="my-16">
+    <div>
+      <Helmet>
+        <title>MR's Kitchen | Order</title>
+      </Helmet>
       <Cover
         bgImg={orderImg}
         title="Order Food"
         description="Would you like to try a dish?"
       ></Cover>
 
-      <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+      <Tabs
+        className="my-10"
+        selectedIndex={tabIndex}
+        onSelect={(index) => setTabIndex(index)}
+      >
         <TabList>
           <Tab>Salad</Tab>
           <Tab>Pizza</Tab>
