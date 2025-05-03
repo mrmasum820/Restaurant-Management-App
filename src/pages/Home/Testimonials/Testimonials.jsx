@@ -32,7 +32,7 @@ const Testimonials = () => {
               <FaQuoteLeft className="text-7xl my-6" />
 
               <p>{review.details}</p>
-              <h3 className="text-2xl text-yellow-500 uppercase">
+              <h3 className="text-xl text-yellow-500 uppercase">
                 {review.name}
               </h3>
             </div>
