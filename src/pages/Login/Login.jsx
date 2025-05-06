@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
@@ -31,6 +32,7 @@ const Login = () => {
 
     signIn(email, password).then((result) => {
       const loggedUser = result.user;
+      console.log(loggedUser);
       Swal.fire({
         title: "Login Successfully",
         icon: "success",
@@ -104,6 +106,8 @@ const Login = () => {
                     Create an account
                   </Link>
                 </p>
+                <div className="divider divider-horizontal"></div>
+                <SocialLogin></SocialLogin>
               </fieldset>
             </div>
           </div>

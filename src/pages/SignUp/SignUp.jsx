@@ -5,10 +5,13 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
   const {
     register,
@@ -18,19 +21,28 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     createUser(data.email, data.password).then((result) => {
-      console.log(result.user);
+      // console.log(result.user);
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          console.log("profile updated");
-          Swal.fire({
-            title: "User Created Successfully",
-            icon: "success",
-            draggable: true,
+          // console.log("profile updated");
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            console.log(res.data);
+            if (res.data.insertedId) {
+              Swal.fire({
+                title: "User Created Successfully",
+                icon: "success",
+                draggable: true,
+              });
+              reset();
+              navigate("/");
+            }
           });
-          reset();
-          navigate("/");
         })
         .catch((error) => console.log(error));
     });
@@ -128,6 +140,8 @@ const SignUp = () => {
                     Sign In
                   </Link>
                 </p>
+                <div className="divider divider-horizontal"></div>
+                <SocialLogin></SocialLogin>
               </fieldset>
             </div>
           </div>
